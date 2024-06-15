@@ -28,6 +28,8 @@ type Props = TouchableOpacityProps & {
   type?: keyof typeof TYPE_COLORS;
 };
 
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
+
 export function Level({
   title,
   type = "EASY",
@@ -73,20 +75,21 @@ export function Level({
   }, [isChecked]);
 
   return (
-    <Pressable onPressIn={handlePressIn} onPressOut={handlePressOut} {...rest}>
-      <Animated.View
-        style={[
-          styles.container,
-          {
-            borderColor: COLOR,
-          },
-          animatedContentStyles,
-        ]}
-      >
-        <Animated.Text style={[styles.title, animatedTextStyles]}>
-          {title}
-        </Animated.Text>
-      </Animated.View>
-    </Pressable>
+    <AnimatedPressable
+      style={[
+        styles.container,
+        {
+          borderColor: COLOR,
+        },
+        animatedContentStyles,
+      ]}
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
+      {...rest}
+    >
+      <Animated.Text style={[styles.title, animatedTextStyles]}>
+        {title}
+      </Animated.Text>
+    </AnimatedPressable>
   );
 }
