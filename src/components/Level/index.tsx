@@ -1,10 +1,4 @@
-import {
-  TouchableOpacity,
-  TouchableOpacityProps,
-  Text,
-  View,
-  Pressable,
-} from "react-native";
+import { TouchableOpacityProps, Pressable } from "react-native";
 
 import { THEME } from "../../styles/theme";
 import { styles } from "./styles";
